@@ -1,0 +1,35 @@
+{
+    "name": "slimapi/slimapi",
+    "authors": [
+        {
+            "name": "Meits Meits",
+            "email": "meitslin@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "slim/slim": "^4.4",
+        "slim/psr7": "^1.0",
+        "php-di/php-di": "^6.0",
+        "ext-json": "^1.6",
+        "symfony/console": "^4.4",
+        "squizlabs/php_codesniffer": "^3.5"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master",
+        "overtrue/phplint": "^1.2",
+        "vimeo/psalm": "^3.9"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "scripts": {
+        "lint": "phplint",
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "app": "php bin/app.php --ansi",
+        "psalm": "psalm"
+    }
+}
