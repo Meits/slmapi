@@ -7,4 +7,7 @@
  * Time: 23:01
  */
 
-define("APP_ENV", "dev");
+if(!defined('APP_ENV')) {
+    define("APP_ENV", "dev");
+}
+

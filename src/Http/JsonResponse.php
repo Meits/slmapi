@@ -15,8 +15,6 @@ use Slim\Psr7\Response;
 
 class JsonResponse extends Response
 {
-
-
     /**
      * JsonResponse constructor.
      * @param mixed $data
