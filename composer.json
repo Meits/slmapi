@@ -13,7 +13,9 @@
         "php-di/php-di": "^6.0",
         "ext-json": "^1.6",
         "symfony/console": "^4.4",
-        "squizlabs/php_codesniffer": "^3.5"
+        "squizlabs/php_codesniffer": "^3.5",
+        "ramsey/uuid": "^3.9",
+        "webmozart/assert": "^1.7"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",

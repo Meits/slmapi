@@ -6,7 +6,7 @@
  * Time: 21:40
  */
 
-namespace Test\Unit\Http;
+namespace App\Http\Test\Unit;
 
 use App\Http\JsonResponse;
 use PHPUnit\Framework\TestCase;
