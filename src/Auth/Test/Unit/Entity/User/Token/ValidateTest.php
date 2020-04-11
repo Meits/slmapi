@@ -17,7 +17,7 @@ class ValidateTest extends TestCase
     /**
      * @doesNotPerformAssertions
      */
-    /*public function testSuccess(): void
+    public function testSuccess(): void
     {
         $token = new Token(
             $value = Uuid::uuid4()->toString(),
@@ -47,5 +47,5 @@ class ValidateTest extends TestCase
 
         $this->expectExceptionMessage('Token is expired.');
         $token->validate($value, $expires->modify('+1 secs'));
-    }*/
+    }
 }

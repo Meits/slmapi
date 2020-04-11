@@ -21,19 +21,13 @@ class RequestTest extends TestCase
     public function testSuccess(): void
     {
 
-        $id = Id::generate();
-        $date = new DateTimeImmutable();
-        $email = new Email('mail@example.com');
-        $hash = 'hash';
-        $token = new Token(Uuid::uuid4()->toString(), new DateTimeImmutable());
-
-        /*$user = User::requestJoinByEmail(
-            $id,
-            $date,
-            $email,
-            $hash,
-            $token
-        );*/
+        $user = new User(
+            $id = Id::generate(),
+            $date = new DateTimeImmutable(),
+            $email = new Email('mail@example.com'),
+            $hash = 'hash',
+            $token = new Token(Uuid::uuid4()->toString(), new DateTimeImmutable())
+        );
 
         self::assertEquals($id, $user->getId());
         self::assertEquals($date, $user->getDate());
@@ -41,9 +35,10 @@ class RequestTest extends TestCase
         self::assertEquals($hash, $user->getPasswordHash());
         self::assertEquals($token, $user->getJoinConfirmToken());
 
-        //self::assertTrue($user->isWait());
-        //self::assertFalse($user->isActive());
 
-        //self::assertEquals(Role::USER, $user->getRole()->getName());
+        self::assertEquals($user->isWait());
+        self::assertEquals($user->isActive());
+
+
     }
 }

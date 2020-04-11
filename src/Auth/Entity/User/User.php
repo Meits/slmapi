@@ -12,31 +12,28 @@ namespace App\Auth\Entity\User;
 
 use App\Auth\Service\PasswordHasher;
 use DateTimeImmutable;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
 use DomainException;
 
-/**
- * @ORM\Entity
- * @ORM\HasLifecycleCallbacks
- * @ORM\Table(name="auth_users")
- */
+
 class User
 {
+
+    public const STATUS_WAIT = 'wait';
+    public const STATUS_ACTIVE = 'active';
 
     private  $id;
     private  $date;
     private  $email;
     private  $passwordHash = null;
     private  $joinConfirmToken = null;
+    private  $status;
 
 
-    private function __construct(
+    public function __construct(
         Id $id,
         DateTimeImmutable $date,
         Email $email,
-        string $passwordHash,
+        $passwordHash,
         Token $token
     )
     {
@@ -45,37 +42,61 @@ class User
         $this->email = $email;
         $this->passwordHash = $passwordHash;
         $this->joinConfirmToken = $token;
+        $this->status = Status::wait();
 
+
+    }
+
+    public function confirmJoin(string $token, DateTimeImmutable $date): void
+    {
+        if ($this->joinConfirmToken === null) {
+            throw new DomainException('Confirmation is not required.');
+        }
+        $this->joinConfirmToken->validate($token, $date);
+        $this->status = Status::active();
+        $this->joinConfirmToken = null;
     }
 
 
 
-    public function getId(): Id
+    public function getId()
     {
         return $this->id;
     }
 
-    public function getDate(): DateTimeImmutable
+    /**
+     * @return bool
+     */
+    public function isWait()
+    {
+        return $this->status->isWait();
+    }
+    public function isActive()
+    {
+        return $this->status->isActive();
+    }
+
+    public function getDate()
     {
         return $this->date;
     }
 
-    public function getEmail(): Email
+    public function getEmail()
     {
         return $this->email;
     }
 
-    public function getRole(): Role
+    public function getRole()
     {
         return $this->role;
     }
 
-    public function getPasswordHash(): ?string
+    public function getPasswordHash()
     {
         return $this->passwordHash;
     }
 
-    public function getJoinConfirmToken(): ?Token
+    public function getJoinConfirmToken()
     {
         return $this->joinConfirmToken;
     }
