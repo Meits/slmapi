@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Auth\Test\Unit\Entity\User\User\JoinByEmail;
 
-use App\Auth\Entity\User\Role;
 use App\Auth\Entity\User\Token;
 use App\Auth\Entity\User\Email;
 use App\Auth\Entity\User\Id;
@@ -20,8 +19,7 @@ class RequestTest extends TestCase
 {
     public function testSuccess(): void
     {
-
-        $user = new User(
+        $user = User::requestJoinByEmail(
             $id = Id::generate(),
             $date = new DateTimeImmutable(),
             $email = new Email('mail@example.com'),
@@ -35,10 +33,7 @@ class RequestTest extends TestCase
         self::assertEquals($hash, $user->getPasswordHash());
         self::assertEquals($token, $user->getJoinConfirmToken());
 
-
-        self::assertEquals($user->isWait());
-        self::assertEquals($user->isActive());
-
-
+        self::assertTrue($user->isWait());
+        self::assertFalse($user->isActive());
     }
 }

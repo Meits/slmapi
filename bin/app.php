@@ -1,19 +1,19 @@
+#!/usr/bin/env php
 <?php
-
-/**
- * Created by PhpStorm.
- * User: MeitsWorkPc
- * Date: 22.01.2020
- * Time: 22:57
- */
 
 declare(strict_types=1);
 
+use Psr\Container\ContainerInterface;
+use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Command\Command;
 
-/** @var \Psr\Container\ContainerInterface $container */
+require __DIR__ . '/../vendor/autoload.php';
+
+/** @var ContainerInterface $container */
 $container = require __DIR__ . '/../config/container.php';
-$cli = new \Symfony\Component\Console\Application('console');
+
+$cli = new Application('Console');
+
 /**
  * @var string[] $commands
  * @psalm-suppress MixedArrayAccess

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: MeitsWorkPc
- * Date: 19.02.2020
- * Time: 22:27
- */
 
 declare(strict_types=1);
 

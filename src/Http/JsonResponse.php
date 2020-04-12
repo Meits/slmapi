@@ -1,11 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: MeitsWorkPc
- * Date: 22.01.2020
- * Time: 22:19
- */
+declare(strict_types=1);
 
 namespace App\Http;
 
@@ -16,7 +11,6 @@ use Slim\Psr7\Response;
 class JsonResponse extends Response
 {
     /**
-     * JsonResponse constructor.
      * @param mixed $data
      * @param int $status
      */
@@ -25,7 +19,7 @@ class JsonResponse extends Response
         parent::__construct(
             $status,
             new Headers(['Content-Type' => 'application/json']),
-            (new StreamFactory())->createStream(json_encode($data))
+            (new StreamFactory())->createStream(json_encode($data, JSON_THROW_ON_ERROR))
         );
     }
 }

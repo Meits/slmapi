@@ -1,34 +1,33 @@
 {
-    "name": "slimapi/slimapi",
-    "authors": [
-        {
-            "name": "Meits Meits",
-            "email": "meitslin@gmail.com"
-        }
-    ],
+    "name": "deworkerpro/demo-auction",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "config": {
+        "process-timeout": 0,
+        "sort-packages": true
+    },
     "require": {
-        "php": "^7.2",
-        "slim/slim": "^4.4",
-        "slim/psr7": "^1.0",
+        "php": "^7.4",
+        "ext-json": "^7.4",
         "php-di/php-di": "^6.0",
-        "ext-json": "^1.6",
-        "symfony/console": "^4.4",
-        "squizlabs/php_codesniffer": "^3.5",
         "ramsey/uuid": "^3.9",
-        "webmozart/assert": "^1.7"
+        "slim/psr7": "^0.6.0",
+        "slim/slim": "^4.3",
+        "symfony/console": "^5.0",
+        "webmozart/assert": "^1.6"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-master",
         "overtrue/phplint": "^1.2",
-        "vimeo/psalm": "^3.9",
-        "phpunit/phpunit": "^8.5"
+        "phpunit/phpunit": "^8.5",
+        "roave/security-advisories": "dev-master",
+        "squizlabs/php_codesniffer": "^3.5",
+        "vimeo/psalm": "^3.8"
     },
     "autoload": {
         "psr-4": {
             "App\\": "src/"
         }
     },
-
     "autoload-dev": {
         "psr-4": {
             "Test\\": "tests/"
@@ -38,9 +37,9 @@
         "lint": "phplint",
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
-        "app": "php bin/app.php --ansi",
         "psalm": "psalm",
         "test": "phpunit --colors=always",
-        "test-coverage": "phpunit --colors=always --coverage-html var/coverage"
+        "test-coverage": "phpunit --colors=always --coverage-html var/coverage",
+        "app": "php bin/app.php --ansi"
     }
 }

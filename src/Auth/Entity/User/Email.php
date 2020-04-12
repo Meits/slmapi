@@ -1,30 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: MeitsWorkPc
- * Date: 15.03.2020
- * Time: 20:11
- */
+
+declare(strict_types=1);
 
 namespace App\Auth\Entity\User;
-
 
 use Webmozart\Assert\Assert;
 
 class Email
 {
-    private $value;
+    private string $value;
 
-    /**
-     * Email constructor.
-     */
     public function __construct(string $value)
     {
         Assert::notEmpty($value);
-        if (!filter_var($value, FILTER_VALIDATE_EMAIL)) {
-            throw  new \InvalidArgumentException("Incorect email");
-        }
-
+        Assert::email($value);
         $this->value = mb_strtolower($value);
     }
 
@@ -32,5 +21,4 @@ class Email
     {
         return $this->value;
     }
-
 }

@@ -1,13 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: MeitsWorkPc
- * Date: 09.03.2020
- * Time: 17:31
- */
+
+declare(strict_types=1);
 
 namespace App\Auth\Command\JoinByEmail\Request;
-
 
 use App\Auth\Entity\User\Email;
 use App\Auth\Entity\User\Id;
@@ -22,24 +17,19 @@ use DomainException;
 
 class Handler
 {
-
     private UserRepository $users;
     private PasswordHasher $hasher;
     private Tokenizer $tokenizer;
     private Flusher $flusher;
     private JoinConfirmationSender $sender;
 
-
-    /**
-     * Handler constructor.
-     */
     public function __construct(
         UserRepository $users,
-                                PasswordHasher $hasher,
-                                Tokenizer $tokenizer,
-                                Flusher $flusher,
-                                JoinConfirmationSender $sender)
-    {
+        PasswordHasher $hasher,
+        Tokenizer $tokenizer,
+        Flusher $flusher,
+        JoinConfirmationSender $sender
+    ) {
         $this->users = $users;
         $this->hasher = $hasher;
         $this->tokenizer = $tokenizer;
@@ -57,7 +47,7 @@ class Handler
 
         $date = new DateTimeImmutable();
 
-        $user = new User(
+        $user = User::requestJoinByEmail(
             Id::generate(),
             $date,
             $email,

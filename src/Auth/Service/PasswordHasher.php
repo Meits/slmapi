@@ -1,13 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: MeitsWorkPc
- * Date: 15.03.2020
- * Time: 20:46
- */
+
+declare(strict_types=1);
 
 namespace App\Auth\Service;
 
+use RuntimeException;
+use Webmozart\Assert\Assert;
 
 class PasswordHasher
 {

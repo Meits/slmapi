@@ -1,23 +1,13 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: MeitsWorkPc
- * Date: 19.02.2020
- * Time: 21:58
- */
+
+declare(strict_types=1);
 
 namespace Test\Functional;
 
-
-use PHPUnit\Framework\TestCase;
-use Slim\Psr7\Factory\ServerRequestFactory;
-
 class HomeTest extends WebTestCase
 {
-
     public function testMethod(): void
     {
-
         $response = $this->app()->handle(self::json('POST', '/'));
 
         self::assertEquals(405, $response->getStatusCode());

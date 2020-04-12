@@ -1,21 +1,17 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: MeitsWorkPc
- * Date: 19.02.2020
- * Time: 21:40
- */
+
+declare(strict_types=1);
 
 namespace App\Http\Test\Unit;
 
 use App\Http\JsonResponse;
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 class JsonResponseTest extends TestCase
 {
     public function testWithCode(): void
     {
-
         $response = new JsonResponse(0, 201);
 
         self::assertEquals('application/json', $response->getHeaderLine('Content-Type'));
@@ -42,7 +38,7 @@ class JsonResponseTest extends TestCase
      */
     public function getCases(): array
     {
-        $object = new \stdClass();
+        $object = new stdClass();
         $object->str = 'value';
         $object->int = 1;
         $object->none = null;

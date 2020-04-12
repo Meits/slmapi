@@ -1,16 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: MeitsWorkPc
- * Date: 09.03.2020
- * Time: 17:31
- */
+
+declare(strict_types=1);
 
 namespace App\Auth\Command\JoinByEmail\Request;
 
-
 class Command
 {
-    public $email = '';
-    public $password = '';
+    public string $email = '';
+    public string $password = '';
 }

@@ -1,20 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: MeitsWorkPc
- * Date: 15.03.2020
- * Time: 20:19
- */
+
+declare(strict_types=1);
 
 namespace App\Auth\Entity\User;
 
 use Ramsey\Uuid\Uuid;
 use Webmozart\Assert\Assert;
 
-
 class Id
 {
-    private  $value;
+    private string $value;
 
     public function __construct(string $value)
     {
@@ -30,10 +25,5 @@ class Id
     public function getValue(): string
     {
         return $this->value;
-    }
-
-    public function __toString(): string
-    {
-        return $this->getValue();
     }
 }

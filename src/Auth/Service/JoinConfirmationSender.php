@@ -1,16 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: MeitsWorkPc
- * Date: 15.03.2020
- * Time: 20:44
- */
+
+declare(strict_types=1);
 
 namespace App\Auth\Service;
 
-
-use App\Auth\Entity\User\Email;
 use App\Auth\Entity\User\Token;
+use App\Auth\Entity\User\Email;
 
 interface JoinConfirmationSender
 {
